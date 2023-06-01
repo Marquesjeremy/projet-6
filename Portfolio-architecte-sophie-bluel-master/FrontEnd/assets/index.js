@@ -2,7 +2,7 @@ const filtres = document.querySelector(".filtres");
 const gallery = document.querySelector(".gallery");
 const allProject = document.querySelector("#all");
 
-// Balises pour les images et le titre
+
 const createFigureElement = (project) => {
   const figure = document.createElement("figure");
   const img = document.createElement("img");
@@ -13,7 +13,7 @@ const createFigureElement = (project) => {
   figCaption.textContent = project.title;
 };
 
-// filtres
+
 const createFiltreElement = (arrayProject) => {
   const allCategory = [];
 
@@ -36,7 +36,8 @@ const createFiltreElement = (arrayProject) => {
     });
   });
 };
-// Tri les catégories
+
+
 const sortCategory = (arrayProject, categoryFiltre) => {
   const sort = arrayProject.filter((category) => {
     return category.category.name === categoryFiltre;
@@ -44,7 +45,7 @@ const sortCategory = (arrayProject, categoryFiltre) => {
   return sort;
 };
 
-// Affiche les éléments sur la page
+
 const displayHomeElement = (arrayProject) => {
   const element = arrayProject.map((project) => {
     return createFigureElement(project);
@@ -52,7 +53,7 @@ const displayHomeElement = (arrayProject) => {
   return element;
 };
 
-// les données du serveur
+
 const getData = async (url) => {
   try {
     const requete = await fetch(url, {
