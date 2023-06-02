@@ -1,30 +1,30 @@
 const form = document.querySelector("form");
-const Error = document.querySelector("#msgError");
+const error = document.querySelector("#msgError");
 
 form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const getForm = new FormData(form);
-    const objForm = Object.fromEntries(getForm);
-    setForm("http://localhost:5678/api/users/login", objForm);
+  e.preventDefault();
+  const getForm = new FormData(form);
+  const objForm = Object.fromEntries(getForm);
+  setForm("http://localhost:5678/api/users/login", objForm);
 });
 
-const setForm = async (url, objForm) => {
+const setForm = async (url, form) => {
   try {
-    const response = await fetch(url, {
+    const requete = await fetch(url, {
       method: "POST",
-      body: JSON.stringify(objForm),
+      body: JSON.stringify(form),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    
-    if (response.ok) {
-      Error.style.display = "none";
-      getToken(response);
-      location.href = "./index.html";
+
+    if (requete.ok) {
+      error.style.display = "none";
+      getToken(requete);
+      location.href = "../../../index.html";
     } else {
-      Error.classList.add("error");
-      Error.textContent = "Erreur dans l’identifiant ou le mot de passe";
+      error.classList.add("error");
+      error.textContent = "Erreur dans l’identifiant ou le mot de passe";
     }
   } catch (e) {
     console.log(e);
