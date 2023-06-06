@@ -1,9 +1,13 @@
+const body = document.querySelector("body");
 const filtres = document.querySelector(".filtres");
 const gallery = document.querySelector(".gallery");
 const allProject = document.querySelector("#all");
 const login = document.querySelector("#login");
 const edition = document.querySelectorAll(".modeEdition");
 const modifProject = document.querySelector("#modifAjout");
+const windowModale = document.querySelector(".modale");
+const btnClosemodale = document.querySelector("#close");
+const galleryModale = document.querySelector(".galleryModale");
 
 // Création des balises figure qui contiennet les images et la légende
 const createFigureElement = (project) => {
@@ -45,7 +49,7 @@ const createFiltreElement = (arrayProject) => {
       filtre.addEventListener("click", () => {
         let sort = sortCategory(arrayProject, filtre.textContent);
         gallery.innerHTML = "";
-        displayHomeElement(sort);
+        displayElement(sort);
       });
     });
   });
@@ -58,9 +62,10 @@ const sortCategory = (arrayProject, categoryFiltre) => {
   return sort;
 };
 // Affiche tous les éléments sur la page principal
-const displayHomeElement = (arrayProject) => {
+const displayElement = (arrayProject) => {
   const element = arrayProject.map((project) => {
-    return createFigureElement(project);
+    createFigureElement(project);
+    createFigureModale(project.imageUrl);
   });
   return element;
 };
@@ -75,12 +80,12 @@ const getData = async () => {
       throw console.log("Un problème est survenu");
     } else {
       const data = await requete.json();
-      displayHomeElement(data);
+      displayElement(data);
       createFiltreElement(data);
 
       allProject.addEventListener("click", () => {
         gallery.innerHTML = "";
-        displayHomeElement(data);
+        displayElement(data);
       });
     }
   } catch (e) {
@@ -100,6 +105,13 @@ const modeEdition = () => {
   login.addEventListener("click", () => {
     localStorage.removeItem("token");
   });
+  
+  modifProject.addEventListener("click", () => {
+    modale();
+  });
+  btnClosemodale.addEventListener("click", () => {
+    closeModale();
+  });
 };
 // Mode déconnecter
 const modeNotEdition = () => {
@@ -112,3 +124,31 @@ const modeNotEdition = () => {
 };
 
 localStorage.getItem("token") ? modeEdition() : modeNotEdition();
+
+// modale
+
+const modale = () => {
+  body.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
+  windowModale.style.display = "block";
+};
+
+const closeModale = () => {
+  windowModale.style.display = "none";
+  body.style.backgroundColor = "#fffff9";
+  document.documentElement.style.overflow = "visible";
+};
+// Création image pour la galerie modale
+const createFigureModale = (srcImg) => {
+  let figure = document.createElement("figure");
+  let span = document.createElement("span");
+  let img = document.createElement("img");
+  let figCaption = document.createElement("figcaption");
+  galleryModale.append(figure);
+  figure.append(span, img, figCaption);
+  span.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+  figCaption.textContent = "éditer";
+  img.src = srcImg;
+  img.classList.add("imgModale");
+  span.classList.add("deleteProject");
+  img.setAttribute("crossorigin", "anonymous");
+};
