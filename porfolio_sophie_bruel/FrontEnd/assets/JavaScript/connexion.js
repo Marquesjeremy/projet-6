@@ -5,12 +5,12 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   const getForm = new FormData(form);
   const objForm = Object.fromEntries(getForm);
-  setForm("http://localhost:5678/api/users/login", objForm);
+  setForm(objForm);
 });
 
-const setForm = async (url, form) => {
+const setForm = async (form) => {
   try {
-    const requete = await fetch(url, {
+    const requete = await fetch("http://localhost:5678/api/users/login", {
       method: "POST",
       body: JSON.stringify(form),
       headers: {

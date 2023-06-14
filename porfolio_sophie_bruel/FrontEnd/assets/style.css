@@ -23,7 +23,6 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
-
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -86,7 +85,7 @@ header nav ul li img {
   width: 1.5rem;
 }
 section {
-  margin: 50px;
+  margin: 50px 0;
 }
 
 h1 {
@@ -129,7 +128,7 @@ nav ul li a {
   object-fit: contain;
 }
 
-li:hover {
+li a:hover {
   cursor: pointer;
   color: #b1663c;
 }
@@ -155,16 +154,18 @@ li:hover {
 #introduction {
   display: flex;
   align-items: center;
-  margin-bottom: 5rem;
 }
 #introduction figure {
   flex: 1;
 }
 #introduction img {
   display: block;
-  margin: 30px 0 0 0;
-  width: 90%;
-  object-fit: contain;
+  margin: auto;
+  width: 80%;
+}
+
+figure img {
+  height: 480px;
 }
 
 #introduction article {
@@ -176,12 +177,10 @@ li:hover {
 
 #introduction p {
   margin-bottom: 0.5em;
-  padding: 10px 40px 0 0;
-  line-height: 18px;
 }
 #portfolio h2 {
   text-align: center;
-  margin-bottom: 3em;
+  margin-bottom: 1em;
 }
 .gallery {
   width: 100%;
@@ -193,6 +192,7 @@ li:hover {
 
 .gallery img {
   width: 100%;
+  object-fit: contain;
 }
 #contact {
   width: 50%;
@@ -298,12 +298,12 @@ footer nav ul {
   position: absolute;
   z-index: 1;
   background-color: white;
-  width: 55%;
+  width: 45%;
   top: 20%;
   right: 30%;
-  left: 20%;
+  left: 25%;
   border-radius: 10px;
-  padding: 3rem;
+  padding: 2rem;
 }
 
 .figureZoom {
@@ -318,14 +318,14 @@ footer nav ul {
   color: white;
 }
 
+#close {
+  font-size: 25px;
+}
+
 .btnCloseModale,
 .btnCloseAddModale {
   display: block;
   text-align: right;
-}
-
-#close {
-  font-size: 25px;
 }
 
 .btnCloseModale i,
@@ -342,10 +342,9 @@ footer nav ul {
 .galleryModale {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid #b3b3b3;
-  margin-bottom: 2rem;
+  margin: 30px 30px 30px 30px;
 }
 
 .galleryModale figure {
@@ -357,6 +356,7 @@ footer nav ul {
 
 figure .imgModale {
   width: 100%;
+  height: 93%;
   object-fit: contain;
 }
 
@@ -378,16 +378,21 @@ figure .imgModale {
   border-radius: 60px;
   color: white;
   border: none;
-  padding: 0.8rem 4rem;
+  padding: 0.6rem 4rem;
   font-family: "Syne", sans-serif;
 }
 
 .deleteGallery {
+  font-family: 'syne';
   text-align: center;
   margin-top: 2rem;
   color: red;
   cursor: pointer;
 }
+
+.back {
+  font-size: 20px;
+} 
 
 .modaleAddProject_icon {
   display: flex;
@@ -407,10 +412,10 @@ figure .imgModale {
   justify-content: space-evenly;
   align-items: center;
   height: 200px;
+  width: 70%;
   background-color: #e8f1f7;
   margin-top: 2rem;
-  margin-bottom: 2rem;
-  border-radius: 3px;
+  margin: 30px 0 30px 100px;
 }
 
 .bloc-picture i {
@@ -445,11 +450,12 @@ figure .imgModale {
   display: none;
   width: 200px;
   height: 200px;
+  object-fit: cover;
 }
 
 .inputAddProject {
   border-bottom: 1px solid #b3b3b3;
-  margin-bottom: 2rem;
+  margin: 0px 115px 30px 100px;
 }
 
 .inputAddProject input {
@@ -481,14 +487,12 @@ figure .imgModale {
 
 .bouton_add_picture {
   display: block;
+  font-family: 'syne';
   margin: auto;
   background: #1d6154;
   border-radius: 60px;
   border: none;
-  padding-left: 5rem;
-  padding-right: 5rem;
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
+  padding: 0.6rem 4rem;
   color: white;
   font-weight: 500;
   cursor: pointer;
@@ -499,10 +503,10 @@ figure .imgModale {
 }
 
 .btnDisabled {
+  font-family: 'syne';
   display: block;
   margin: auto;
   background-color: #a7a7a7;
-  cursor: none;
 }
 
 footer {
